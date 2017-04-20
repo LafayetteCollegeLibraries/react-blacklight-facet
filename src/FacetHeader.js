@@ -33,19 +33,18 @@ class FacetHeader extends React.PureComponent {
     return (
       <div className={className} onClick={onClick}>
         { this.props.children }
-        { this.props.hideArrow ? null : this.renderArrow(open) }
+        { this.renderArrow(open) }
       </div>
     )
   }
 }
 
 FacetHeader.defaultProps = {
-  onClick: () => {},
   open: false,
 }
 
 FacetHeader.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
   open: PropTypes.bool,
 }
 

@@ -12,7 +12,7 @@ const itemPropType = PropTypes.shape({
 
 const propTypes = {
   items: PropTypes.arrayOf(itemPropType).isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   name: PropTypes.string.isRequired,
 
   onRemoveSelectedItem: PropTypes.func.isRequired,
@@ -62,10 +62,6 @@ class FacetBase extends React.PureComponent {
         {this.renderBody()}
       </div>
     )
-  }
-
-  toggleOpen () {
-    this.setState({open: !this.state.open})
   }
 
   render () {
