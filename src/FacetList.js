@@ -1,7 +1,8 @@
-const React = require('react')
-const PropTypes = require('prop-types')
-const ReactModal = require('react-modal')
-const FacetBase = require('./FacetBase')
+import React from 'react'
+import PropTypes from 'prop-types'
+import ReactModal from 'react-modal'
+
+import FacetBase from './Base'
 
 const propTypes = {
   ...FacetBase.propTypes,
@@ -103,9 +104,11 @@ class FacetList extends FacetBase {
   }
 
   renderBody () {
+    const limit = this.props.limit
+
     // for clarity's sake:
-    const limitUnselectedItems = true
-    const hasMore = this.props.items.length > this.props.limit
+    const limitUnselectedItems = limit !== null
+    const hasMore = limit !== null && this.props.items.length > this.props.limit
 
     return (
       <div className="FacetList">
@@ -146,4 +149,4 @@ class FacetList extends FacetBase {
 FacetList.propTypes = propTypes
 FacetList.defaultProps = defaultProps
 
-module.exports = FacetList
+export default FacetList

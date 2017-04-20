@@ -1,6 +1,6 @@
-const React = require('react')
-const PropTypes = require('prop-types')
-const cn = require('classnames')
+import React from 'react'
+import PropTypes from 'prop-types'
+import cn from 'classnames'
 
 class FacetHeader extends React.PureComponent {
   renderArrow (isOpen) {
@@ -40,13 +40,11 @@ class FacetHeader extends React.PureComponent {
 }
 
 FacetHeader.defaultProps = {
-  hideArrow: false,
   onClick: () => {},
   open: false,
 }
 
 FacetHeader.propTypes = {
-  hideArrow: PropTypes.bool,
   onClick: PropTypes.func,
   open: PropTypes.bool,
 }

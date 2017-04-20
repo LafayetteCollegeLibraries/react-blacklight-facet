@@ -1,7 +1,8 @@
-const React = require('react')
-const PropTypes = require('prop-types')
-const cn = require('classnames')
-const Header = require('./FacetHeader')
+import React from 'react'
+import PropTypes from 'prop-types'
+import cn from 'classnames'
+
+import Header from './FacetHeader'
 
 const itemPropType = PropTypes.shape({
   hits: PropTypes.number,
@@ -10,13 +11,12 @@ const itemPropType = PropTypes.shape({
 })
 
 const propTypes = {
-  label: PropTypes.string,
-  name: PropTypes.string,
+  items: PropTypes.arrayOf(itemPropType).isRequired,
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 
-  items: PropTypes.arrayOf(itemPropType),
-
-  onRemoveSelectedFacet: PropTypes.func,
-  onSelectFacet: PropTypes.func,
+  onRemoveSelectedItem: PropTypes.func.isRequired,
+  onSelectItem: PropTypes.func.isRequired,
   open: PropTypes.bool,
 
   selectedItems: PropTypes.arrayOf(itemPropType),
@@ -32,6 +32,7 @@ class FacetBase extends React.PureComponent {
     super(props)
 
     this._renderBody = this._renderBody.bind(this)
+    this.renderBody = this.renderBody.bind(this)
 
     this.state = {
       open: props.open || false
@@ -58,7 +59,7 @@ class FacetBase extends React.PureComponent {
 
     return (
       <div className="Facet-Body">
-        {this.renderBody.call(this)}
+        {this.renderBody()}
       </div>
     )
   }

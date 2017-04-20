@@ -1,7 +1,7 @@
 {
   "name": "@lafayette-college-libraries/react-blacklight-facet",
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "lib/index.js",
   "author": "Adam Malantonio <malantoa@lafayette.edu>",
   "license": "GPL-3.0",
   "peerDependencies": {
