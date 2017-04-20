@@ -1,0 +1,32 @@
+.FacetList-list {
+  list-style-type: none;
+  margin: 0;
+  padding: .25em;
+}
+
+.FacetList-item {
+  cursor: pointer;
+  padding: .25em;
+}
+
+.FacetList-item-hits {
+  float: right;
+  padding: 0 .25em;
+  text-align: right;
+  width: 2em;
+}
+
+.FacetList-label {
+  margin-right: 2em;
+
+}
+
+.selected .FacetList-item {
+  color: green;
+}
+
+.selected .FacetList-item:hover::after {
+  color: red;
+  content: 'x';
+  margin-left: .5em;
+}

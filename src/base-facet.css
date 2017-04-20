@@ -1,0 +1,39 @@
+.Facet {
+  border: 2px solid #4ea8dd;
+}
+
+.Facet.has-selected-items {
+  border-color: #d8ecd8;
+}
+
+.Facet-Header {
+  color: #1e1e1e;
+  cursor: pointer;
+  padding: .25em;
+  user-select: none;
+}
+
+.Facet-Header.is-open {
+  border-bottom: 1px solid #d8ecd8;
+}
+
+.has-selected-items .Facet-Header {
+  background-color: #d8ecd8;
+}
+
+.Facet-Header-arrow {
+  float: right;
+  margin-top: 1px;
+  stroke: #1e1e1e;
+  stroke-width: 2;
+}
+
+.has-selected-items .Facet-Header-arrow {
+}
+
+.Facet-Header-arrow.is-open {
+
+}
+
+.Facet-Body {
+}
