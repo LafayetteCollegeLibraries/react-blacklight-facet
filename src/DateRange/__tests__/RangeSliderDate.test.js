@@ -24,12 +24,12 @@ describe('<RangeSliderDate />', function () {
       $els = $el.find('DelayedInput')
     })
 
-    it('renders inputs with `type="month"', function () {
+    test('renders inputs with `type="month"', function () {
       const $filtered = $els.findWhere($e => $e.prop('type') === 'month')
       expect($els).toHaveLength(2)
     })
 
-    it('parses value to YYYY-MM', function () {
+    test('parses value to YYYY-MM', function () {
       $els.forEach($$el => {
         expect($$el.prop('value'))
           .toEqual(expect.stringMatching(/^\d{4}-\d{2}$/))
@@ -45,12 +45,12 @@ describe('<RangeSliderDate />', function () {
       $els = $el.find('DelayedInput')
     })
 
-    it('renders inputs with `type="date"`', function () {
+    test('renders inputs with `type="date"`', function () {
       const $filtered = $els.findWhere($e => $e.prop('type') === 'date')
       expect($els).toHaveLength(2)
     })
 
-    it('parses value to YYYY-MM-DD', function () {
+    test('parses value to YYYY-MM-DD', function () {
       $els.forEach($$el => {
         expect($$el.prop('value'))
           .toEqual(expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/))
@@ -66,12 +66,12 @@ describe('<RangeSliderDate />', function () {
       $els = $el.find('DelayedInput')
     })
 
-    it('renders inputs with `type="number"`', function () {
+    test('renders inputs with `type="number"`', function () {
       const $filtered = $els.findWhere($e => $e.prop('type') === 'number')
       expect($els).toHaveLength(2)
     })
 
-    it('parses value to YYYY', function () {
+    test('parses value to YYYY', function () {
       $els.forEach($$el => {
         expect($$el.prop('value'))
           .toEqual(expect.stringMatching(/^\d{4}$/))
@@ -80,7 +80,7 @@ describe('<RangeSliderDate />', function () {
   })
 
   describe('the `onApplyRange` handler', function () {
-    it('is called with an array of 2 numbers', function (done) {
+    test('is called with an array of 2 numbers', function (done) {
       const onApplyRange = vals => {
         expect(Array.isArray(vals)).toBeTruthy()
         expect(vals).toHaveLength(2)
@@ -96,7 +96,7 @@ describe('<RangeSliderDate />', function () {
       $button.simulate('click')
     })
 
-    it('is called with rounded date values', function (done) {
+    test('is called with rounded date values', function (done) {
       const min = Date.parse('1986-02-11T11:11:00Z')
       const max = Date.parse('2016-11-06T15:49:00Z')
 
@@ -137,7 +137,7 @@ describe('<RangeSliderDate />', function () {
   })
 
   describe('the `min` input', function () {
-    it('changes the value of `state.min`', function () {
+    test('changes the value of `state.min`', function () {
       const minValue = '1999-12-31'
       const split = minValue.split('-').map(Number)
       split[1] = split[1] - 1
@@ -161,7 +161,7 @@ describe('<RangeSliderDate />', function () {
   })
 
   describe('the `max` input', function () {
-    it('changes the value of `state.max`', function () {
+    test('changes the value of `state.max`', function () {
       const maxValue = '2017-01-01'
       const split = maxValue.split('-').map(Number)
       split[1] = split[1] - 1
@@ -180,6 +180,22 @@ describe('<RangeSliderDate />', function () {
       setTimeout(function () {
         const maxState = $el.state('max')
         expect(maxState).toEqual(maxTs)
+      }, 0)
+    })
+  })
+
+  describe('when the `interval` prop is updated', function () {
+    test('updates the internal `_step_` property', function () {
+      const $el = shallowEl({interval: INTERVALS.DAY})
+      $el.render()
+
+      const firstStep = $el.instance()._step
+
+      $el.setProps({interval: INTERVALS.MONTH})
+
+      setTimeout(() => {
+        const secondStep = $el.instance()._step
+        expect(firstStep).not.toEqual(secondStep)
       }, 0)
     })
   })

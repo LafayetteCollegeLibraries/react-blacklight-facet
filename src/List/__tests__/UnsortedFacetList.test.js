@@ -15,12 +15,12 @@ const shallowEl = xtend => (
 )
 
 describe('UnsortedFacetList', function () {
-  it('generates an <li> for each item in props.items', () => {
+  test('generates an <li> for each item in props.items', () => {
     const $el = shallowEl()
     expect($el.find('li').length).toBe(defaultProps.items.length)
   })
 
-  it('passes an item handler', done => {
+  test('passes an item handler', done => {
     const facet = 'facet-name'
     const index = 1
 
@@ -35,7 +35,7 @@ describe('UnsortedFacetList', function () {
     $el.find('li').at(index).simulate('click')
   })
 
-  it('uses the `item.value` if `item.label` is missing', () => {
+  test('uses the `item.value` if `item.label` is missing', () => {
     const items = [
       {value: 'cool val'},
       {value: 'rad val'},
@@ -48,7 +48,7 @@ describe('UnsortedFacetList', function () {
     expect($el.find('li').at(index).text()).toBe(items[index].value)
   })
 
-  it('renders the `item.hits` property', () => {
+  test('renders the `item.hits` property', () => {
     const $el = shallowEl()
     $el.find('li').forEach(($item, idx) => {
       expect($item.find('.FacetList-item-hits').first().text())

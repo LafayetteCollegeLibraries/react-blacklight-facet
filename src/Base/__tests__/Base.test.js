@@ -21,13 +21,13 @@ const shallowBase = xtend => (
 )
 
 describe('FacetBase', function () {
-  it('throws when no `renderBody` method provided', () => {
+  test('throws when no `renderBody` method provided', () => {
     expect(() => {
       render(<FacetBase {...defaultProps} open={true} />)
     }).toThrow()
   })
 
-  it('sets the `open` state when header is clicked', () => {
+  test('sets the `open` state when header is clicked', () => {
     const $el = shallowBase()
     const $header = $el.find('FacetHeader')
 
@@ -42,7 +42,7 @@ describe('FacetBase', function () {
     }, 0)
   })
 
-  it('falls back to `props.name` when `props.label` is missing', () => {
+  test('falls back to `props.name` when `props.label` is missing', () => {
     const $el = mount(<ShallowBase {...defaultProps} label={null} />)
     const $header = $el.find('FacetHeader')
 

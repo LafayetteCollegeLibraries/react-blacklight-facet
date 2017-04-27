@@ -6,7 +6,7 @@ const yearModifier = value => Number(value)
 const dateModifier = value => Date.parse(value)
 
 describe('catalog/common/calculate-range', function () {
-  it('uses a pass-thru function if no valueModifier provided', function () {
+  test('uses a pass-thru function if no valueModifier provided', function () {
     var items = [
       {
         value: 'a',
@@ -28,7 +28,7 @@ describe('catalog/common/calculate-range', function () {
     expect(range.hits).toEqual(0)
   })
 
-  it('calculates the total number of hits', function () {
+  test('calculates the total number of hits', function () {
     const items = yearRange.items
     const totalHits = items.reduce(function (total, item) {
       return total + item.hits
@@ -42,7 +42,7 @@ describe('catalog/common/calculate-range', function () {
   describe('with string numeric + Number modifier', function () {
     const range = calculateRange(yearRange.items, yearModifier)
 
-    it('calculates the min value', function () {
+    test('calculates the min value', function () {
       const min = yearRange.items.reduce(function (min, item) {
         const val = yearModifier(item.value)
         return val < min ? val : min
@@ -51,7 +51,7 @@ describe('catalog/common/calculate-range', function () {
       expect(range.min).toEqual(min)
     })
 
-    it('calculates the max value', function () {
+    test('calculates the max value', function () {
       const max = yearRange.items.reduce(function (max, item) {
         const val = yearModifier(item.value)
         return val > max ? val : max
@@ -64,7 +64,7 @@ describe('catalog/common/calculate-range', function () {
   describe('with ISO timestamp + Date modifier', function () {
     const range = calculateRange(isoDateRange.items, dateModifier)
 
-    it('calculates the min date value', function () {
+    test('calculates the min date value', function () {
       const min = isoDateRange.items.reduce(function (current, item) {
         const val = dateModifier(item.value)
         return val < current ? val : current
@@ -73,7 +73,7 @@ describe('catalog/common/calculate-range', function () {
       expect(range.min).toEqual(min)
     })
 
-    it('calculates the max date value', function () {
+    test('calculates the max date value', function () {
       const max = isoDateRange.items.reduce(function (current, item) {
         const val = dateModifier(item.value)
         return val > current ? val : current

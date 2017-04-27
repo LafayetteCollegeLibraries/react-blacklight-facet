@@ -61,7 +61,7 @@ class RangeSliderDate extends React.PureComponent {
 
   componentWillReceiveProps (nextProps) {
     if (nextProps.interval !== this.props.interval) {
-      this.step = null
+      this._step = null
     }
   }
 

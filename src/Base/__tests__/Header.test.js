@@ -7,14 +7,14 @@ const shallowEl = xtend => (
 )
 
 describe('FacetHeader', function () {
-  it('calls `onClick` when clicked', done => {
+  test('calls `onClick` when clicked', done => {
     const onClick = () => { done() }
     const $el = shallowEl({onClick})
 
     $el.simulate('click')
   })
 
-  it('rotates svg 90 degrees when `props.open` is true', () => {
+  test('rotates svg 90 degrees when `props.open` is true', () => {
     const $el = shallowEl({open: true})
     expect($el.find('svg').prop('transform')).toBe('rotate(90)')
   })

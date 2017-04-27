@@ -5,7 +5,7 @@ describe('catalog/common/round-date-to-interval', function () {
   // 2016-11-29T11:18:00Z
   const TIMESTAMP = Date.UTC(2016, 10, 29, 11, 18, 0)
 
-  it('rounds `day` to the day', function () {
+  test('rounds `day` to the day', function () {
     const rounded = roundDate(INTERVALS.DAY, TIMESTAMP)
     const d = new Date(TIMESTAMP)
     const r = new Date(rounded)
@@ -21,7 +21,7 @@ describe('catalog/common/round-date-to-interval', function () {
     expect(r.getUTCMinutes()).toBe(0)
   })
 
-  it('rounds `month` to the month', function () {
+  test('rounds `month` to the month', function () {
     const rounded = roundDate(INTERVALS.MONTH, TIMESTAMP)
     const d = new Date(TIMESTAMP)
     const r = new Date(rounded)
@@ -39,7 +39,7 @@ describe('catalog/common/round-date-to-interval', function () {
     expect(r.getUTCMinutes()).toBe(0)
   })
 
-  it('rounds `year` to the year', function () {
+  test('rounds `year` to the year', function () {
     const rounded = roundDate(INTERVALS.YEAR, TIMESTAMP)
     const d = new Date(TIMESTAMP)
     const r = new Date(rounded)
