@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cn from 'classnames'
 
-import Header from './FacetHeader'
+import Header from './Header'
 
 const itemPropType = PropTypes.shape({
   hits: PropTypes.number,

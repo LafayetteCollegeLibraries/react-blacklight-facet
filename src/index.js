@@ -1,5 +1,5 @@
 import Base from './Base'
-import FacetList from './FacetList'
+import FacetList from './List'
 
 export default Base
 

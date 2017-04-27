@@ -1,5 +1,5 @@
 import React from 'react'
-import FacetHeader from '../FacetHeader'
+import FacetHeader from '../Header'
 import { shallow } from 'enzyme'
 
 const shallowEl = xtend => (

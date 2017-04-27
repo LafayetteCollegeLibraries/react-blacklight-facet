@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow, mount, render } from 'enzyme'
-import FacetBase from '../Base'
+import FacetBase from '../'
 
 const noop = () => {}
 

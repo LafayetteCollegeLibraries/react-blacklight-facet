@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import ReactModal from 'react-modal'
 
 import FacetBase from './Base'
+import UnsortedFacetList from './UnsortedFacetList'
 
 const propTypes = {
   ...FacetBase.propTypes,
@@ -63,26 +64,6 @@ class FacetList extends FacetBase {
     )
   }
 
-  renderListItems (name, items, handler) {
-    return items.map((item, index) => (
-      <li
-        className="FacetList-item"
-        key={item.value + index}
-        onClick={() => {
-          handler(name, item)
-        }}
-      >
-        <span className="FacetList-item-label">
-          {item.label || item.value}
-        </span>
-
-        <span className="FacetList-item-hits">
-          {item.hits}
-        </span>
-      </li>
-    ))
-  }
-
   renderLists (limitItems) {
     const {
       items,
@@ -94,12 +75,17 @@ class FacetList extends FacetBase {
     const unselected = limitItems ? items.slice(0, limit) : [].concat(items)
 
     return [
-      <ul className="FacetList-list selected">
-        {this.renderListItems(name, selectedItems, this.handleRemoveItem)}
-      </ul>,
-      <ul className="FacetList-list">
-        {this.renderListItems(name, unselected, this.handleSelectItem)}
-      </ul>,
+      <UnsortedFacetList
+        facet={name}
+        items={selectedItems}
+        listClassName="selected"
+        onItemClick={this.handleRemoveItem}
+      />,
+      <UnsortedFacetList
+        facet={name}
+        items={unselected}
+        onItemClick={this.handleSelectItem}
+      />,
     ]
   }
 
