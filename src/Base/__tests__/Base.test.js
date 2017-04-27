@@ -20,31 +20,33 @@ const shallowBase = xtend => (
   shallow(<ShallowBase {...defaultProps} {...xtend} />)
 )
 
-test('throws when no `renderBody` method provided', () => {
-  expect(() => {
-    render(<FacetBase {...defaultProps} open={true} />)
-  }).toThrow()
-})
+describe('FacetBase', function () {
+  it('throws when no `renderBody` method provided', () => {
+    expect(() => {
+      render(<FacetBase {...defaultProps} open={true} />)
+    }).toThrow()
+  })
 
-test('sets the `open` state when header is clicked', () => {
-  const $el = shallowBase()
-  const $header = $el.find('FacetHeader')
+  it('sets the `open` state when header is clicked', () => {
+    const $el = shallowBase()
+    const $header = $el.find('FacetHeader')
 
-  expect($header.length).toBe(1)
-  expect($el.state('open')).toBeFalsey
+    expect($header.length).toBe(1)
+    expect($el.state('open')).toBeFalsey
 
 
-  $header.simulate('click')
+    $header.simulate('click')
 
-  setTimeout(() => {
-    expect($el.state('open')).toBeTruthy
-  }, 0)
-})
+    setTimeout(() => {
+      expect($el.state('open')).toBeTruthy
+    }, 0)
+  })
 
-test('falls back to `props.name` when `props.label` is missing', () => {
-  const $el = mount(<ShallowBase {...defaultProps} label={null} />)
-  const $header = $el.find('FacetHeader')
+  it('falls back to `props.name` when `props.label` is missing', () => {
+    const $el = mount(<ShallowBase {...defaultProps} label={null} />)
+    const $header = $el.find('FacetHeader')
 
-  expect($header.text()).not.toBe(defaultProps.label)
-  expect($header.text()).toBe(defaultProps.name)
+    expect($header.text()).not.toBe(defaultProps.label)
+    expect($header.text()).toBe(defaultProps.name)
+  })
 })

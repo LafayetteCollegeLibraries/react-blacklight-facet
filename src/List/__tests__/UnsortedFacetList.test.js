@@ -14,43 +14,45 @@ const shallowEl = xtend => (
   shallow(<UnsortedFacetList {...defaultProps} {...xtend} />)
 )
 
-test('generates an <li> for each item in props.items', () => {
-  const $el = shallowEl()
-  expect($el.find('li').length).toBe(defaultProps.items.length)
-})
+describe('UnsortedFacetList', function () {
+  it('generates an <li> for each item in props.items', () => {
+    const $el = shallowEl()
+    expect($el.find('li').length).toBe(defaultProps.items.length)
+  })
 
-test('passes an item handler', done => {
-  const facet = 'facet-name'
-  const index = 1
+  it('passes an item handler', done => {
+    const facet = 'facet-name'
+    const index = 1
 
-  const onItemClick = (name, item) => {
-    expect(name).toBe(facet)
-    expect(item).toEqual(defaultProps.items[index])
+    const onItemClick = (name, item) => {
+      expect(name).toBe(facet)
+      expect(item).toEqual(defaultProps.items[index])
 
-    done()
-  }
+      done()
+    }
 
-  const $el = shallowEl({facet, onItemClick})
-  $el.find('li').at(index).simulate('click')
-})
+    const $el = shallowEl({facet, onItemClick})
+    $el.find('li').at(index).simulate('click')
+  })
 
-test('uses the `item.value` if `item.label` is missing', () => {
-  const items = [
-    {value: 'cool val'},
-    {value: 'rad val'},
-    {value: 'whatever'},
-  ]
+  it('uses the `item.value` if `item.label` is missing', () => {
+    const items = [
+      {value: 'cool val'},
+      {value: 'rad val'},
+      {value: 'whatever'},
+    ]
 
-  const index = 2
+    const index = 2
 
-  const $el = shallowEl({items})
-  expect($el.find('li').at(index).text()).toBe(items[index].value)
-})
+    const $el = shallowEl({items})
+    expect($el.find('li').at(index).text()).toBe(items[index].value)
+  })
 
-test('renders the `item.hits` property', () => {
-  const $el = shallowEl()
-  $el.find('li').forEach(($item, idx) => {
-    expect($item.find('.FacetList-item-hits').first().text())
-      .toBe(defaultProps.items[idx].hits.toString())
+  it('renders the `item.hits` property', () => {
+    const $el = shallowEl()
+    $el.find('li').forEach(($item, idx) => {
+      expect($item.find('.FacetList-item-hits').first().text())
+        .toBe(defaultProps.items[idx].hits.toString())
+    })
   })
 })
