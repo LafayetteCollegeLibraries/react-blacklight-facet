@@ -1,3 +1,10 @@
 node_modules
+
+# track the source files, not the transpiled ones
 lib
+
+# don't need to track coverage files
 coverage
+
+# let's not track the storybook files, for now at least
+.storybook
