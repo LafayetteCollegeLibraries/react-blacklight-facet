@@ -1,0 +1,21 @@
+$default-color: #4ea8dd;
+$selected-color: #d8ecd8;
+
+// BaseFacet
+$facet-border-color: $default-color;
+$facet-border-size: 2px;
+$facet-border-style: solid;
+$facet-has-selected-border-color: $selected-color;
+
+// FacetHeader
+$facet-header-text-color: #1e1e1e;
+$facet-header-padding: .25em;
+$facet-has-selected-header-background-color:
+
+// FacetHeaderArrow
+$facet-header-arrow-color: #1e1e1e;
+$facet-header-arrow-width: 2;
+
+@include "Base/style.scss";
+@include "List/style.scss";
+@include "DateRange/style.scss";

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReactModal from 'react-modal'
 
-import FacetBase from './Base'
+import FacetBase from '../Base'
 import UnsortedFacetList from './UnsortedFacetList'
 
 const propTypes = {
@@ -78,12 +78,14 @@ class FacetList extends FacetBase {
       <UnsortedFacetList
         facet={name}
         items={selectedItems}
+        key="selected-facets"
         listClassName="selected"
         onItemClick={this.handleRemoveItem}
       />,
       <UnsortedFacetList
         facet={name}
         items={unselected}
+        key="unselected-facets"
         onItemClick={this.handleSelectItem}
       />,
     ]

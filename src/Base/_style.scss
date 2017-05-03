@@ -1,0 +1,32 @@
+.Facet {
+  border: $facet-border-size $facet-border-style $facet-border-color;
+
+  &.has-selected-items {
+    border-color: $facet-has-selected-border-color;
+  }
+
+  &-Header {
+    color: $facet-header-text-color;
+    cursor: pointer;
+    padding: $facet-header-padding;
+    user-select: none;
+
+    &.is-open {
+      border-bottom: 1px solid #d8ecd8;
+    }
+
+    &-arrow {
+      float: right;
+      margin-top: 1px;
+      stroke: $facet-header-arrow-color;
+      stroke-width: $facet-header-arrow-width;
+    }
+  }
+
+  &.has-selected-items &-Header {
+    background-color: $facet-has-selected-header-background-color;
+  }
+
+}
+
+

@@ -89,4 +89,4 @@ class FacetBase extends React.PureComponent {
 FacetBase.propTypes = propTypes
 FacetBase.defaultProps = defaultProps
 
-module.exports = FacetBase
+export default FacetBase

@@ -48,4 +48,4 @@ FacetHeader.propTypes = {
   open: PropTypes.bool,
 }
 
-module.exports = FacetHeader
+export default FacetHeader

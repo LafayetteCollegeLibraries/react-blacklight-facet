@@ -22,11 +22,11 @@ const UnsortedFacetList = function UnsortedFacetList (props) {
             key={item.value + index}
             onClick={() => handler && handler(props.facet, item)}
           >
-            <span className={classNames.label}>
+            <span key="label" className={classNames.label}>
               { item.label || item.value }
             </span>
 
-            <span className={classNames.hits}>
+            <span key="hits" className={classNames.hits}>
               { item.hits }
             </span>
           </li>
