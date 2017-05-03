@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Range } from 'rc-slider'
+import { createSliderWithTooltip, Range } from 'rc-slider'
 import DelayedInput from '@lafayette-college-libraries/react-delayed-input'
 
 import FacetBase from '../Base'
@@ -18,6 +18,8 @@ import roundDateToInterval from './round-date-to-interval'
 import parseUtcTimestamp from './parse-utc-timestamp'
 
 const { YEAR, MONTH, DAY } = INTERVALS
+
+const RangeSlider = createSliderWithTooltip(Range)
 
 const propTypes = {
   // min/max are UTC timestamp values (similar to Date.now())
@@ -165,7 +167,7 @@ class RangeSliderDate extends React.PureComponent {
       props.step = this.getStepValue()
     }
 
-    return <Range {...props} />
+    return <RangeSlider {...props} />
   }
 
   render () {

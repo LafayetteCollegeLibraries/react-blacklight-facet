@@ -98,6 +98,8 @@ class FacetList extends FacetBase {
     const limitUnselectedItems = limit !== null
     const hasMore = limit !== null && this.props.items.length > this.props.limit
 
+    const hasSelectedItems = this.props.selectedItems.length > 0
+
     return (
       <div className="FacetList">
         { this.renderLists(limitUnselectedItems) }

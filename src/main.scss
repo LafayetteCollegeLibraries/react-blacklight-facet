@@ -1,21 +1,24 @@
-$default-color: #4ea8dd;
-$selected-color: #d8ecd8;
+$default-color: #4ea8dd !default;
+$selected-color: #65ab65 !default;
 
 // BaseFacet
-$facet-border-color: $default-color;
-$facet-border-size: 2px;
-$facet-border-style: solid;
-$facet-has-selected-border-color: $selected-color;
+$facet-border-color: $default-color !default;
+$facet-border-radius: 2px;
+$facet-border-size: 2px !default;
+$facet-border-style: solid !default;
+$facet-has-selected-border-color: $selected-color !default;
 
 // FacetHeader
-$facet-header-text-color: #1e1e1e;
-$facet-header-padding: .25em;
-$facet-has-selected-header-background-color:
+$facet-header-background-color: $default-color !default;
+$facet-header-text-color: #fff !default;
+$facet-header-padding: .25em !default;
+$facet-has-selected-header-background-color: $selected-color !default;
 
 // FacetHeaderArrow
-$facet-header-arrow-color: #1e1e1e;
-$facet-header-arrow-width: 2;
+$facet-header-arrow-color: $facet-header-text-color !default;
+$facet-header-arrow-width: 2 !default;
 
-@include "Base/style.scss";
-@include "List/style.scss";
-@include "DateRange/style.scss";
+@import "Base/style.scss";
+@import "List/style.scss";
+@import "FacetRangeLimitDate/style.scss";
+@import "FacetRangeLimitDate/rc-slider";

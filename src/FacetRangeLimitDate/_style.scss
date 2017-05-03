@@ -1,0 +1,28 @@
+.RangeSliderDate {
+  $range-slider-input-wiggle-room: 10px;
+
+  &-input-container {
+    margin-bottom: $range-slider-input-wiggle-room;
+  }
+
+  &-label {
+    display: inline-block;
+  }
+
+  &-input {
+    display: block;
+    font-family: inherit;
+    font-size: 1rem;
+    margin-bottom: $range-slider-input-wiggle-room;
+    margin-right: $range-slider-input-wiggle-room;
+    min-width: 5em;
+  }
+
+  &-apply-range-btn {
+    background-color: $default-color;
+    border: none;
+    color: #fff;
+    font-size: 0.8rem;
+    line-height: 1.5rem;
+  }
+}
