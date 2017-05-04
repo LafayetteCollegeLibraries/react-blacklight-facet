@@ -175,7 +175,7 @@ to align with how Blacklight handles ranges with the
 }
 ```
 
-See [src/FacetRangeLimitDate/create-range-facet.js][src/FacetRangeLimitDate/create-range-facet.js]
+See [src/FacetRangeLimitDate/create-range-facet.js](src/FacetRangeLimitDate/create-range-facet.js)
 for the implementation.
 
 #### propTypes
@@ -199,7 +199,7 @@ be included in your project's. To do so, make sure that
 ```
 
 to your Sass file. This includes some basic styling for all three components
-and also includes the styling for the [`rc-slider`][rcslider] component used
+and also includes the styling for the [`rc-slider`][rc-slider] component used
 within. To require styling only for individual components, you can
 use the following:
 
