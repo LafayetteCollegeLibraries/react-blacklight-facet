@@ -26,6 +26,7 @@ class FacetList extends FacetBase {
     this.toggleViewMoreModal = this.toggleViewMoreModal.bind(this)
 
     this.state = {
+      ...this.state,
       modalOpen: false,
     }
   }

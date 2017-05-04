@@ -52,7 +52,9 @@ class FacetBase extends React.PureComponent {
     throw new Error('no `renderBody` method is defined')
   }
 
-  _renderBody (open) {
+  _renderBody () {
+    const { open } = this.state
+
     if (!open) {
       return null
     }
@@ -65,22 +67,23 @@ class FacetBase extends React.PureComponent {
   }
 
   render () {
-    const open = this.state.open
     const className = cn('Facet', {
       'has-selected-items': this.props.selectedItems.length > 0,
-      'is-open': open,
+      'is-open': this.state.open,
     })
 
     return (
       <div className={className}>
         <Header
-          onClick={() => {this.setState({open: !open})}}
-          open={open}
+          onClick={() => {
+            this.setState(prev => ({open: prev.open ? false : true}))
+          }}
+          open={this.state.open}
         >
           { this.props.label || this.props.name }
         </Header>
 
-        { this._renderBody(open) }
+        { this._renderBody() }
       </div>
     )
   }

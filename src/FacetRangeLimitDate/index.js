@@ -39,6 +39,7 @@ class FacetRangeLimitDate extends FacetBase {
     this.maybeRenderSelectedItems = this.maybeRenderSelectedItems.bind(this)
 
     this.state = {
+      ...this.state,
       hits: 0,
       items: props.items,
       max: 0,
