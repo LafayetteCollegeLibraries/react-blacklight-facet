@@ -123,6 +123,11 @@ function LimitedList (props) {
 styling
 -------
 
+`react-blacklight-facet` uses [Sass][sass] for styling, allowing theming using
+variables.
+
+
+
 _note: elements are used to clarify which are being used and it's best to
 leave them out in your styles_
 
@@ -179,3 +184,4 @@ div.Modal-header {}
 ```
 
 [react-modal]: https://github.com/reactjs/react-modal
+[sass]: http://sass-lang.com
