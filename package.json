@@ -8,11 +8,10 @@
     "react-dom": "^15.5.4"
   },
   "dependencies": {
-    "@lafayette-college-libraries/react-delayed-input": "^2.0.1",
+    "@lafayette-college-libraries/react-delayed-input": "^2.0.2",
     "classnames": "^2.2.5",
     "prop-types": "^15.5.8",
     "rc-slider": "^7.0.2",
-    "react": "^15.5.4",
     "react-modal": "^1.7.7"
   },
   "devDependencies": {
@@ -25,9 +24,14 @@
     "enzyme": "^2.8.2",
     "jest": "^19.0.2",
     "node-sass": "^4.5.2",
+    "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
     "sass-loader": "^6.0.3"
+  },
+  "peerDepencendies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   },
   "scripts": {
     "build": "babel src -d lib --source-maps inline --copy-files",
