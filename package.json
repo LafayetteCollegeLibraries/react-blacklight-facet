@@ -6,8 +6,8 @@
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/LafayetteCollegeLibraries/react-blacklight-facet",
-  }
+    "url": "https://github.com/LafayetteCollegeLibraries/react-blacklight-facet"
+  },
   "dependencies": {
     "@lafayette-college-libraries/react-delayed-input": "^2.0.2",
     "classnames": "^2.2.5",
