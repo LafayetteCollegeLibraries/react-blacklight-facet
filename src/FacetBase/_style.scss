@@ -1,6 +1,7 @@
 .Facet {
   border: $facet-border-size $facet-border-style $facet-border-color;
   border-radius: $facet-border-radius;
+  margin: $facet-container-margin;
 
   &.has-selected-items {
     border-color: $selected-border-color;
