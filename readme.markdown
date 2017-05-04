@@ -34,154 +34,192 @@ similar to:
 }
 ```
 
-usage (Base)
------------------
+usage
+-----
 
-Included is a base component which provides the toggle-able header/body.
-To create a custom facet body, simply extend the base class and provide
-a `renderBody` method:
-
-```jsx
-import FacetBase from '@lafayette-college-libraries/react-blacklight-facet'
-
-class CoolFacet extends FacetBase {
-  renderBody () {
-    const { items, label, name } = this.props
-    return (
-      <div>
-        This facet ({label}) contains {items.length} items!:
-        <ul>
-          {items.map((item, index) => (
-            <li key={`${name}-${index}`}>{item.label}</li>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-}
+```
+npm install --save @lafayette-college-libraries/react-blacklight-facet
 ```
 
-### propTypes
+Included in the package is a `FacetBase` component which is used as an
+interface for constructing the `FacetList` and `FacetRangeLimitDate`
+components. This base component can also be extended to create custom
+facet components.
+
+### `FacetBase`
+
+#### propTypes
+
+The `items`, `label`, and `name` props all come from the Blacklight
+JSON catalog response:
 
 ```javascript
 {
-  // items, label, and name from the Blacklight response
   items: PropTypes.arrayOf(PropTypes.shape({
     hits: PropTypes.number,
     label: PropTypes.string,
     value: PropTypes.any,
   })).isRequired,
-  label: PropTypes.string.isRequired,
+
+  label: PropTypes.string,
   name: PropTypes.string.isRequired,
 
-  // event triggered when a selectedItem is clicked
-  // function (facetName /* string */, facetItem /* object */)
-  onRemoveSelectedItem: PropTypes.func.isRequired,
+  // onRemoveSelectedItem and onSelectItem are event
+  // handlers that receive the signature:
+  //
+  //   function (facetInfo, itemInfo)
+  //
+  // where each is an object.
+  // `facetInfo` is the Blacklight response, minus the
+  //    `items` array.
+  // `itemInfo` is the item in the `items` array
 
-  // event triggered when a facet item (not selected) is clicked
-  // function (facetName /* string */, facetItem /* object */)
+  onRemoveSelectedItem: PropTypes.func.isRequired,
   onSelectItem: PropTypes.func.isRequired,
 
-  // should the body component be visible?
-  // default: false
+  // whether to initially open the facet (see `extending` for
+  // info about managing this in custom components).
+  // default is false
   open: PropTypes.bool,
 
-  // default: []
+  // an array of selected facet items.
+  // default is []
   selectedItems: PropTypes.arrayOf(itemPropType),
 }
 ```
 
-usage (List)
------------------
+#### extending the class
 
-Also included is a facet list component that provides a component similar
-to the stock Blacklight facet. A limited set of facets are displayed and
-a button toggles a [`react-modal`][react-modal] containing all of the items.
+When extending the `FacetBase` class, all that is required is a
+`renderBody` method, which is called when the Facet is toggled open.
 
 ```javascript
-import { List } from '@lafayette-college-libraries/react-blacklight-facet'
+import { FacetBase } from '@lafayette-college-libraries/react-blacklight-facet'
 
-function LimitedList (props) {
-  return (
-    <List {...props} limit={10} />
-  )
+export default class CoolFacet extends FacetBase {
+  renderBody () {
+    return this.props.items.map((item, index) => (
+      <div
+        className="CoolFacet-item"
+        onClick={this.props.onSelectItem}
+      >
+        {item.label}
+      </div>
+    ))
+  }
+}
+
+```
+
+**Note:** if you're planning on using the `props.open` to allow some
+facets to be open on initial render, you'll have to either add this
+property to the state, or extend it like so:
+
+```javascript
+class CoolFacet extends FacetBase {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      ...this.state,
+
+      /* or */
+
+      open: props.open,
+    }
+  }
 }
 ```
 
-### propTypes
+### `FacetList`
+
+![FacetList with no limit](media/screenshot-facet-list.png)
+
+Renders facet items in an unordered list. The intention was to keep the design
+close to what is featured on the [Blacklight demo site][blacklight-demo] but
+with some stylistic / ux differences. By default the initial list is limited
+to five items, controlled with the `limit` prop. The remaining items are stored
+in a [modal][react-modal] which is triggered by clicking a 'View More' button. This can be
+disabled by setting the limit to `null`, which will display all of the facet items.
+
+#### propTypes
 
 ```javascript
 {
   ...FacetBase.propTypes,
 
-  // the number of list items shown in the facet body
-  // default: 5
   limit: PropTypes.number,
 }
 ```
 
-styling
--------
+### `FacetRangeLimitDate`
 
-`react-blacklight-facet` uses [Sass][sass] for styling, allowing theming using
-variables.
+![FacetRangeLimitDate](media/screenshot-facet-range-date.png)
 
+Calculates the range of dates in `facet.items` and renders a [slider][rc-slider]
+along with a min/max input pair. The interval on the slider is determined
+with the `interval` prop, which defaults to `'day'`. The 'Apply Range' button
+calls the `onSelectItem` handler, but the `itemInfo` argument is a little different
+to align with how Blacklight handles ranges with the
+[`blacklight_range_limit`][blacklight-range-limit] gem:
 
-
-_note: elements are used to clarify which are being used and it's best to
-leave them out in your styles_
-
-### FacetBase
-
-```css
-div.Facet {}
-div.Facet.has-selected-items {}
-div.Facet.is-open {}
-
-div.Facet-Header {}
-div.Facet-Header.is-open {}
-
-/* note: you'll want to at least style the `stroke` and `stroke-width`
- * properties, as the arrow won't appear otherwise!
- *
- *   stroke: #1e1e1e;
- *   stroke-width: 2;
- *
- */
-svg.Facet-Header-arrow {}
-
-div.Facet-Body {}
+```javascript
+{
+  value: {
+    begin, // min value
+    end, // max value
+  },
+  label, // stringified version of value: `${value.begin} - ${value.end}`
+  name, // name of the facet
+  type: 'range', // used to help distinguish from a regular facet
+}
 ```
 
-### FacetList
+See [src/FacetRangeLimitDate/create-range-facet.js][src/FacetRangeLimitDate/create-range-facet.js]
+for the implementation.
 
-_note: styling for the following affects the body portion of the facet_
+#### propTypes
 
-```css
-div.FacetList {}
+```javascript
+{
+  ...FacetBase.propTypes,
 
-ul.FacetList-list {}
-ul.FacetList-list.selected
-
-li.FacetList-item {}
-
-span.FacetList-item-label {}
-span.FacetList-item-hits {}
-
-div.FacetList button.view-more
-
-/*
- * styles passed to react-modal component
- * (note: you'll definitely need to provide these, as passing classNames
- *  to `react-router` overrides the default styling
- *  see: https://github.com/reactjs/react-modal#styles)
- */
-div.Modal-overlay {}
-div.Modal-container {}
-
-/* header that displays "Viewing all options for {facet label}" */
-div.Modal-header {}
+  interval: PropTypes.oneOf(['day', 'month', 'year']),
+}
 ```
 
+### styling
+
+This package also includes an [SCSS][sass] stylesheet that can
+be included in your project's. To do so, make sure that
+`node_modules` is included in your Sass `include-path` and add
+
+```scss
+@import "@lafayette-college-libraries/react-blacklight-facet/lib/main.scss";
+```
+
+to your Sass file. This includes some basic styling for all three components
+and also includes the styling for the [`rc-slider`][rcslider] component used
+within. To require styling only for individual components, you can
+use the following:
+
+```scss
+@import "@lafayette-college-libraries/react-blacklight-facet/lib/BaseFacet/style";
+@import "@lafayette-college-libraries/react-blacklight-facet/lib/FacetList/style";
+@import "@lafayette-college-libraries/react-blacklight-facet/lib/RangeSliderDate/rc-slider";
+@import "@lafayette-college-libraries/react-blacklight-facet/lib/RangeSliderDate/style";
+```
+
+(apologies for breaking your characters-per-line limit!)
+
+There are also a gazillion different Sass variables used within the
+[main stylesheet][main.scss] that can be overridden to customize your
+implementation. _And if that wasn't enough_, each piece has a className
+that can be targeted.
+
+[blacklight-demo]: https://demo.projectblacklight.org
+[blacklight-range-limit]: https://github.com/projectblacklight/blacklight_range_limit
+[main.scss]: src/main.scss
+[rc-slider]: https://github.com/react-component/slider
 [react-modal]: https://github.com/reactjs/react-modal
 [sass]: http://sass-lang.com
