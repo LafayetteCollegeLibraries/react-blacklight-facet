@@ -5,12 +5,12 @@ $selected-background-color: #65ab65 !default;
 $selected-text-color: #fff !default;
 
 // BaseFacet - default
-$facet-body-padding: 10px;
+$facet-body-padding: 10px !default;
 $facet-border-color: $facet-background-color !default;
-$facet-border-radius: 2px;
+$facet-border-radius: 2px !default;
 $facet-border-size: 2px !default;
 $facet-border-style: solid !default;
-$facet-container-margin: 4px 0;
+$facet-container-margin: 4px 0 !default;
 
 // BaseFacet - selected
 $selected-border-color: $selected-background-color !default;
