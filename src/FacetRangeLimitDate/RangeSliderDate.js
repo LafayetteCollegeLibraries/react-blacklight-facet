@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { createSliderWithTooltip, Range } from 'rc-slider'
+import Range from 'rc-slider/lib/Range'
+import createSliderWithTooltip from 'rc-slider/lib/createSliderWithTooltip'
+
 import DelayedInput from '@lafayette-college-libraries/react-delayed-input'
 
 import FacetBase from '../FacetBase'
