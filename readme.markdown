@@ -1,6 +1,8 @@
 react-blacklight-facet
 ======================
 
+[![Build Status](https://travis-ci.org/LafayetteCollegeLibraries/react-blacklight-facet.svg?branch=master)](https://travis-ci.org/LafayetteCollegeLibraries/react-blacklight-facet)
+
 React components for displaying facet data from a Blacklight-api response.
 
 The JSON response for a Blacklight catalog search will return something
