@@ -1,6 +1,4 @@
 .RangeSliderDate {
-  $range-slider-input-wiggle-room: 10px;
-
   &-input-container {
     margin-bottom: $range-slider-input-wiggle-room;
   }
@@ -19,7 +17,7 @@
   }
 
   &-apply-range-btn {
-    background-color: $default-color;
+    background-color: $facet-background-color;
     border: none;
     color: #fff;
     font-size: 0.8rem;

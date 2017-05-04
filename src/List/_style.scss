@@ -1,6 +1,6 @@
 .FacetList {
   &-list {
-    list-style-type: none;
+    list-style-type: $facet-list-style-type;
     margin: 0;
     padding: .25em;
   }
@@ -10,6 +10,8 @@
     padding: .25em;
 
     &-hits {
+      background-color: $facet-list-hits-background-color;
+      color: $facet-list-hits-text-color;
       float: right;
       padding: 0 .25em;
       text-align: right;
@@ -22,18 +24,18 @@
   }
 
   &-list.selected &-item {
-    color: $selected-color;
+    color: $selected-list-text-color;
 
     &:hover::after {
-      color: red;
-      content: 'x';
+      color: $selected-list-remove-text-color;
+      content: $selected-list-remove-text-content;
       margin-left: .5em;
     }
   }
 
   .view-more {
-    background-color: #fff;
-    border: none;
+    background-color: $view-more-button-background-color;
+    border: $view-more-button-border;
     color: $facet-header-background-color;
     cursor: pointer;
     margin: .25rem;

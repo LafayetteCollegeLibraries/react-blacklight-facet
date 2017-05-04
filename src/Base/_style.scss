@@ -3,7 +3,7 @@
   border-radius: $facet-border-radius;
 
   &.has-selected-items {
-    border-color: $facet-has-selected-border-color;
+    border-color: $selected-border-color;
   }
 
   &-Header {
@@ -26,7 +26,8 @@
   }
 
   &.has-selected-items &-Header {
-    background-color: $facet-has-selected-header-background-color;
+    background-color: $selected-header-background-color;
+    color: $selected-header-text-color;
   }
 
   &-Body {

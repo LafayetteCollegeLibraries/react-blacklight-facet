@@ -1,22 +1,46 @@
-$default-color: #4ea8dd !default;
-$selected-color: #65ab65 !default;
+$facet-background-color: #4ea8dd !default;
+$facet-text-color: #fff !default;
 
-// BaseFacet
-$facet-border-color: $default-color !default;
+$selected-background-color: #65ab65 !default;
+$selected-text-color: #fff !default;
+
+// BaseFacet - default
+$facet-body-padding: 10px;
+$facet-border-color: $facet-background-color !default;
 $facet-border-radius: 2px;
 $facet-border-size: 2px !default;
 $facet-border-style: solid !default;
-$facet-has-selected-border-color: $selected-color !default;
 
-// FacetHeader
-$facet-header-background-color: $default-color !default;
-$facet-header-text-color: #fff !default;
+// BaseFacet - selected
+$selected-border-color: $selected-background-color !default;
+
+// FacetHeader - default
+$facet-header-background-color: $facet-background-color !default;
+$facet-header-text-color: $facet-text-color !default;
 $facet-header-padding: .25em !default;
-$facet-has-selected-header-background-color: $selected-color !default;
+
+// FacetHeader - selected
+$selected-header-background-color: $selected-background-color !default;
+$selected-header-text-color: $selected-text-color !default;
 
 // FacetHeaderArrow
 $facet-header-arrow-color: $facet-header-text-color !default;
 $facet-header-arrow-width: 2 !default;
+
+// FacetList - default
+$facet-list-hits-background-color: transparent !default;
+$facet-list-hits-text-color: inherit !default;
+$facet-list-style-type: none !default;
+$view-more-button-background-color: #fff !default;
+$view-more-button-border: none !default;
+
+// FacetList - selected items
+$selected-list-text-color: $selected-text-color !default;
+$selected-list-remove-text-color: red !default;
+$selected-list-remove-text-content: 'x' !default;
+
+// FacetRangeLimitDate
+$range-slider-input-wiggle-room: 10px !default;
 
 @import "Base/style.scss";
 @import "List/style.scss";
