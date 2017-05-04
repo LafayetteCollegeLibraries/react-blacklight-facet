@@ -183,7 +183,7 @@ class RangeSliderDate extends React.PureComponent {
 
     return (
       <div className="RangeSliderDate">
-        <div className="RnageSliderDate-input-container">
+        <div className="RangeSliderDate-input-container">
           {this.renderInput('min')}
           {this.renderInput('max')}
           <button {...buttonProps}>
