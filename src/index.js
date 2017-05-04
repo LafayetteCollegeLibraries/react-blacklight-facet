@@ -1,12 +1,15 @@
-import Base from './Base'
-import FacetList from './List'
+import FacetBase from './FacetBase'
+import FacetList from './FacetList'
+import FacetRangeLimitDate from './FacetRangeLimitDate'
 
 export {
-  Base,
+  FacetBase,
   FacetList,
+  FacetRangeLimitDate,
 }
 
 export default {
-  Base,
+  FacetBase,
   FacetList,
+  FacetRangeLimitDate,
 }

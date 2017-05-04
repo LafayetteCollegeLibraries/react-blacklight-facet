@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf, action } from '@kadira/storybook'
-import FacetList from '../src/List'
+import { FacetList } from '../src'
 
 
 const items = '@'.repeat(10).split('@').map((_, index) => {

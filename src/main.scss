@@ -42,7 +42,7 @@ $selected-list-remove-text-content: 'x' !default;
 // FacetRangeLimitDate
 $range-slider-input-wiggle-room: 10px !default;
 
-@import "Base/style.scss";
-@import "List/style.scss";
+@import "FacetBase/style.scss";
+@import "FacetList/style.scss";
 @import "FacetRangeLimitDate/style.scss";
 @import "FacetRangeLimitDate/rc-slider";

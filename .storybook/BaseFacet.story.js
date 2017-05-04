@@ -1,12 +1,12 @@
 import React from 'react'
 import { storiesOf, action } from '@kadira/storybook'
-import Base from '../src/Base'
+import { FacetBase } from '../src'
 
-class BaseFacet extends Base {
+class Base extends FacetBase {
   renderBody () { return null }
 }
 
-storiesOf('BaseFacet', module)
-  .add('BaseFacet with no body', () => (
-    <BaseFacet label="Base Facet" />
+storiesOf('Base', module)
+  .add('Base with no body', () => (
+    <Base label="Base Facet" />
   ))

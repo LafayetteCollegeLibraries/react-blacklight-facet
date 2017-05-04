@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import ReactModal from 'react-modal'
 
-import FacetBase from '../Base'
+import FacetBase from '../FacetBase'
 import UnsortedFacetList from './UnsortedFacetList'
 
 const propTypes = {

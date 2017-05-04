@@ -4,9 +4,9 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import BaseFacet from '../Base'
+import FacetBase from '../FacetBase'
 import RangeSliderDate from './RangeSliderDate'
-import UnsortedFacetList from '../List/UnsortedFacetList'
+import UnsortedFacetList from '../FacetList/UnsortedFacetList'
 
 import {
   INTERVALS,
@@ -19,19 +19,19 @@ import formatDateValue from './format-date-value'
 import roundDate from './round-date-to-interval'
 
 const propTypes = {
-  ...BaseFacet.propTypes,
+  ...FacetBase.propTypes,
 
   interval: PropTypes.oneOf(INTERVAL_VALUES),
 }
 
 const defaultProps = {
-  ...BaseFacet.defaultProps,
+  ...FacetBase.defaultProps,
 
   interval: INTERVALS.DAY,
   selectedItems: [],
 }
 
-class FacetRangeLimitDate extends BaseFacet {
+class FacetRangeLimitDate extends FacetBase {
   constructor (props) {
     super(props)
 

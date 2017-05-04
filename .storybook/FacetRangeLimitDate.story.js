@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf, action } from '@kadira/storybook'
 
-import FacetRangeLimitDate from '../src/FacetRangeLimitDate'
+import { FacetRangeLimitDate } from '../src'
 
 const items = [
   Date.UTC(2017,1,11),

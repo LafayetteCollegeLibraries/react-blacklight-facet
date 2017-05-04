@@ -4,8 +4,7 @@ import PropTypes from 'prop-types'
 import { createSliderWithTooltip, Range } from 'rc-slider'
 import DelayedInput from '@lafayette-college-libraries/react-delayed-input'
 
-import FacetBase from '../Base'
-import FacetList from '../List/UnsortedFacetList'
+import FacetBase from '../FacetBase'
 
 import {
   INTERVALS,
