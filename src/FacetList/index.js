@@ -68,6 +68,7 @@ class FacetList extends FacetBase {
   renderLists (limitItems) {
     const {
       items,
+      label,
       limit,
       name,
       selectedItems,
@@ -75,16 +76,18 @@ class FacetList extends FacetBase {
 
     const unselected = limitItems ? items.slice(0, limit) : [].concat(items)
 
+    const facet = { label, name }
+
     return [
       <UnsortedFacetList
-        facet={name}
+        facet={facet}
         items={selectedItems}
         key="selected-facets"
         listClassName="selected"
         onItemClick={this.handleRemoveItem}
       />,
       <UnsortedFacetList
-        facet={name}
+        facet={facet}
         items={unselected}
         key="unselected-facets"
         onItemClick={this.handleSelectItem}
