@@ -1,12 +1,12 @@
-import createRangeFacet from '../create-range-facet'
+import createRangeFacetItem from '../create-range-facet-item'
 
-describe('createRangeFacet', function () {
+describe('createRangeFacetItem', function () {
   test('it produces a range object', () => {
     const name = 'name'
     const min = 1900
     const max = 2000
 
-    const result = createRangeFacet(name, min, max)
+    const result = createRangeFacetItem(name, min, max)
 
     expect(typeof result).toBe('object')
     expect(result).toHaveProperty('label')
@@ -24,14 +24,14 @@ describe('createRangeFacet', function () {
     const min = 1900
     const max = 2000
 
-    const result = createRangeFacet('hi', min, max)
+    const result = createRangeFacetItem('hi', min, max)
     expect(result.label).toContain(min)
     expect(result.label).toContain(max)
   })
 
   test('the label contains a single value if min === max', () => {
     const value = 1000
-    const result = createRangeFacet('same', value, value)
+    const result = createRangeFacetItem('same', value, value)
 
     expect(result.label).toEqual(value.toString())
   })

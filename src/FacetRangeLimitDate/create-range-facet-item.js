@@ -1,4 +1,4 @@
-export default function createRangeFacet (name, min, max) {
+export default function createRangeFacetItem (name, min, max) {
   const label = min === max ? `${min}` : `${min} - ${max}`
 
   return {

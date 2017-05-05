@@ -13,7 +13,7 @@ import {
   VALUES as INTERVAL_VALUES,
 } from './date-intervals'
 
-import createRangeFacet from './create-range-facet'
+import createRangeFacetItem from './create-range-facet-item'
 import calculateRange from './calculate-range'
 import formatDateValue from './format-date-value'
 import roundDate from './round-date-to-interval'
@@ -59,12 +59,13 @@ class FacetRangeLimitDate extends FacetBase {
   }
 
   handleApplyRange (range) {
-    const { interval, name } = this.props
+    const { interval, label, name } = this.props
     const [min, max] = range.map(v => formatDateValue(interval, v))
 
-    const facet = createRangeFacet(name, min, max)
+    const facet = { name, label }
+    const item = createRangeFacetItem(name, min, max)
 
-    this.props.onSelectItem(name, facet)
+    this.props.onSelectItem(facet, item)
   }
 
   maybeRenderSelectedItems () {
