@@ -69,7 +69,7 @@ class FacetRangeLimitDate extends FacetBase {
   }
 
   maybeRenderSelectedItems () {
-    const { name, selectedItems } = this.props
+    const { name, label, selectedItems } = this.props
 
     if (selectedItems.length === 0) {
       return null
@@ -77,7 +77,7 @@ class FacetRangeLimitDate extends FacetBase {
 
     return (
       <UnsortedFacetList
-        facet={name}
+        facet={{name, label}}
         items={selectedItems}
         key="selected-items"
         listClassName="selected"
