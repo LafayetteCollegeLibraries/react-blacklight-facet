@@ -36,9 +36,9 @@ $view-more-button-background-color: #fff !default;
 $view-more-button-border: none !default;
 
 // FacetList - selected items
-$selected-list-text-color: $selected-text-color !default;
-$selected-list-remove-text-color: red !default;
-$selected-list-remove-text-content: 'x' !default;
+$selected-list-text-color: $selected-background-color !default;
+$selected-list-remove-text-color: #c40037 !default;
+$selected-list-remove-text-content: "x" !default;
 
 // FacetRangeLimitDate
 $range-slider-input-wiggle-room: 10px !default;
